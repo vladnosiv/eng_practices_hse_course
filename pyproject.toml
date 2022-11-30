@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "vnd-eng-practices-course"
+version = "0.1.0"
+description = ""
+authors = ["Vladislav Nosivskoy <vladnosiv@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.23.5"
+scikit-learn = "^1.1.3"
+
+[tool.poetry.group.dev.dependencies]
+python = "^3.9"
+numpy = "^1.23.5"
+scikit-learn = "^1.1.3"
+pytest = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
