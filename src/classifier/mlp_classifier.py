@@ -12,8 +12,8 @@ class MLPClassifier:
         Parameters
         ----------
         modules : List[Module]
-            Cписок, состоящий из ранее реализованных модулей и 
-            описывающий слои нейронной сети. 
+            Cписок, состоящий из ранее реализованных модулей и
+            описывающий слои нейронной сети.
             В конец необходимо добавить Softmax.
         epochs : int
             Количество эпох обученияю
@@ -23,11 +23,11 @@ class MLPClassifier:
         self.modules = modules
         self.epochs = epochs
         self.alpha = alpha
-            
+
     def fit(self, X: np.ndarray, y: np.ndarray, batch_size=32) -> NoReturn:
         """
-        Обучает нейронную сеть заданное число эпох. 
-        В каждой эпохе необходимо использовать cross-entropy loss для обучения, 
+        Обучает нейронную сеть заданное число эпох.
+        В каждой эпохе необходимо использовать cross-entropy loss для обучения,
         а так же производить обновления не по одному элементу, а используя батчи.
 
         Parameters
@@ -46,21 +46,19 @@ class MLPClassifier:
         for epoch in range(self.epochs):
             for X, y in zip(X_batches, y_batches):
                 inputs = X
-                
+
                 for layer in self.modules:
                     inputs = layer.forward(inputs)
-                
+
                 softmax = Softmax()
                 _ = softmax.forward(inputs)
-                
+
                 inputs = softmax.backward(one_hot_encode(y, classes))
                 for i in range(len(self.modules) - 1, -1, -1):
                     layer = self.modules[i]
                     inputs = layer.backward(inputs)
                     layer.update(self.alpha)
-                
-                
-        
+
     def predict_proba(self, X: np.ndarray) -> np.ndarray:
         """
         Предсказывает вероятности классов для элементов X.
@@ -69,19 +67,19 @@ class MLPClassifier:
         ----------
         X : np.ndarray
             Данные для предсказания.
-        
+
         Return
         ------
         np.ndarray
             Предсказанные вероятности классов для всех элементов X.
             Размерность (X.shape[0], n_classes)
-        
+
         """
         inputs = X
         for layer in self.modules:
             inputs = layer.forward(inputs)
         return inputs
-        
+
     def predict(self, X) -> np.ndarray:
         """
         Предсказывает метки классов для элементов X.
@@ -90,12 +88,12 @@ class MLPClassifier:
         ----------
         X : np.ndarray
             Данные для предсказания.
-        
+
         Return
         ------
         np.ndarray
             Вектор предсказанных классов
-        
+
         """
         p = self.predict_proba(X)
         return np.argmax(p, axis=1)
