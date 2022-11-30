@@ -44,3 +44,16 @@ poetry add --source test-pypi vnd-eng-practices-course
 ```bash
 python3 src/sanity_test.py
 ```
+
+## Code style
+
+Formatting with:
+* isort
+* black
+
+Flake8 plugins:
+* flake8-annotations
+* flake8-pytest
+* flake8-import-order
+* pep8-naming
+* flake8-commas
