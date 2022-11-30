@@ -1,7 +1,9 @@
-from .module import Module
+import copy
 
 import numpy as np
-import copy
+
+from .module import Module
+
 
 class ReLU(Module):
     """

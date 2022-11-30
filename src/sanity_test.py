@@ -1,8 +1,8 @@
+import numpy as np
+from sklearn.datasets import make_blobs, make_moons
+
 from classifier import MLPClassifier
 from nn_modules import Linear, ReLU
-
-from sklearn.datasets import make_blobs, make_moons
-import numpy as np
 
 
 def test_synth_moons():

@@ -1,6 +1,7 @@
+import numpy as np
+
 from .module import Module
 
-import numpy as np
 
 class Softmax(Module):
     """

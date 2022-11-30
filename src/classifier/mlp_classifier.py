@@ -1,8 +1,9 @@
-from nn_modules import Module, Softmax
-from encoders import one_hot_encode
+from typing import List, NoReturn
 
 import numpy as np
-from typing import List, NoReturn
+
+from encoders import one_hot_encode
+from nn_modules import Module, Softmax
 
 
 class MLPClassifier:

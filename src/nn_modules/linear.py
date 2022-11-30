@@ -1,7 +1,9 @@
-from .module import Module
+from typing import NoReturn
 
 import numpy as np
-from typing import NoReturn
+
+from .module import Module
+
 
 class Linear(Module):
     """
