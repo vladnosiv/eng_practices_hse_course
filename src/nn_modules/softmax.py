@@ -1,4 +1,4 @@
-from typing import NoReturn, Self
+from typing import NoReturn
 
 import numpy as np
 
@@ -10,10 +10,10 @@ class Softmax(Module):
     Слой, соответствующий функции активации Softmax.
     """
 
-    def __init__(self: Self) -> NoReturn:
+    def __init__(self) -> NoReturn:
         self.d_y = None
 
-    def forward(self: Self, x: np.ndarray) -> np.ndarray:
+    def forward(self, x: np.ndarray) -> np.ndarray:
         """
         Возвращает y = Softmax(x).
 
@@ -33,7 +33,7 @@ class Softmax(Module):
             [np.exp(x[i]) / np.sum(np.exp(x[i])) for i in range(x.shape[0])],
         )
 
-    def backward(self: Self, d: np.ndarray) -> np.ndarray:
+    def backward(self, d: np.ndarray) -> np.ndarray:
         """
         Cчитает градиент при помощи обратного распространения ошибки.
 

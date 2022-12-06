@@ -1,4 +1,4 @@
-from typing import NoReturn, Self
+from typing import NoReturn
 
 import numpy as np
 
@@ -10,7 +10,7 @@ class Linear(Module):
     Линейный полносвязный слой.
     """
 
-    def __init__(self: Self, in_features: int, out_features: int) -> NoReturn:
+    def __init__(self, in_features: int, out_features: int) -> NoReturn:
         """
         Parameters
         ----------
@@ -34,7 +34,7 @@ class Linear(Module):
         self.x_previous = None
         self.delta = None
 
-    def forward(self: Self, x: np.ndarray) -> np.ndarray:
+    def forward(self, x: np.ndarray) -> np.ndarray:
         """
         Возвращает y = Wx + b.
 
@@ -56,7 +56,7 @@ class Linear(Module):
         self.x_previous = np.c_[np.ones(x.shape[0]), x]
         return self.x_previous @ self.W
 
-    def backward(self: Self, d: np.ndarray) -> np.ndarray:
+    def backward(self, d: np.ndarray) -> np.ndarray:
         """
         Cчитает градиент при помощи обратного распространения ошибки.
 
@@ -72,7 +72,7 @@ class Linear(Module):
         self.delta = d
         return np.delete(d @ self.W.T, 0, 1)
 
-    def update(self: Self, alpha: float) -> NoReturn:
+    def update(self, alpha: float) -> NoReturn:
         """
         Обновляет W и b с заданной скоростью обучения.
 

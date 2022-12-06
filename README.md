@@ -42,7 +42,7 @@ poetry add --source test-pypi vnd-eng-practices-course
 
 ## Run tests
 ```bash
-python3 src/sanity_test.py
+poetry run pytest
 ```
 
 ## Code style

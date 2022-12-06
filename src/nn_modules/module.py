@@ -1,14 +1,14 @@
-from typing import NoReturn, Self
+from typing import NoReturn
 
 import numpy as np
 
 
 class Module:
-    def forward(self: Self, x: np.ndarray) -> np.ndarray:
+    def forward(self, x: np.ndarray) -> np.ndarray:
         raise NotImplementedError()
 
-    def backward(self: Self, d: np.ndarray) -> np.ndarray:
+    def backward(self, d: np.ndarray) -> np.ndarray:
         raise NotImplementedError()
 
-    def update(self: Self, alpha: float) -> NoReturn:
+    def update(self, alpha: float) -> NoReturn:
         pass

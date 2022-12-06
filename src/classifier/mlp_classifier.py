@@ -1,4 +1,4 @@
-from typing import List, NoReturn, Self
+from typing import List, NoReturn
 
 from encoders import one_hot_encode
 
@@ -9,7 +9,7 @@ import numpy as np
 
 class MLPClassifier:
     def __init__(
-            self: Self,
+            self,
             modules: List[Module],
             epochs: int = 40,
             alpha: float = 0.01,
@@ -31,7 +31,7 @@ class MLPClassifier:
         self.alpha = alpha
 
     def fit(
-            self: Self,
+            self,
             xs: np.ndarray,
             y: np.ndarray,
             batch_size: int = 32,
@@ -71,7 +71,7 @@ class MLPClassifier:
                     inputs = layer.backward(inputs)
                     layer.update(self.alpha)
 
-    def predict_proba(self: Self, xs: np.ndarray) -> np.ndarray:
+    def predict_proba(self, xs: np.ndarray) -> np.ndarray:
         """
         Предсказывает вероятности классов для элементов xs.
 
@@ -92,7 +92,7 @@ class MLPClassifier:
             inputs = layer.forward(inputs)
         return inputs
 
-    def predict(self: Self, xs: np.ndarray) -> np.ndarray:
+    def predict(self, xs: np.ndarray) -> np.ndarray:
         """
         Предсказывает метки классов для элементов X.
 

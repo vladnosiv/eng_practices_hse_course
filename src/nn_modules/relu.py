@@ -1,5 +1,5 @@
 import copy
-from typing import NoReturn, Self
+from typing import NoReturn
 
 import numpy as np
 
@@ -11,10 +11,10 @@ class ReLU(Module):
     Слой, соответствующий функции активации ReLU.
     """
 
-    def __init__(self: Self) -> NoReturn:
+    def __init__(self) -> NoReturn:
         self.d_y = None
 
-    def forward(self: Self, x: np.ndarray) -> np.ndarray:
+    def forward(self, x: np.ndarray) -> np.ndarray:
         """
         Возвращает y = max(0, x).
 
@@ -32,7 +32,7 @@ class ReLU(Module):
         self.x = copy.deepcopy(x)
         return np.where(x > 0, x, 0)
 
-    def backward(self: Self, d: np.ndarray) -> np.ndarray:
+    def backward(self, d: np.ndarray) -> np.ndarray:
         """
         Cчитает градиент при помощи обратного распространения ошибки.
 
