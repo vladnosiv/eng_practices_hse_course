@@ -4,6 +4,7 @@
 
 ```bash
 poetry install
+poetry run python3 -m pip install "apache-airflow[celery]==2.5.0" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-3.9.txt"
 ```
 
 ## Install Prod
